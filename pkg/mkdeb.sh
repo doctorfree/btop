@@ -52,11 +52,9 @@ if [ -x build ]
 then
   ./build btop
 else
-  cd btop
   make distclean
   make STATIC=true STRIP=true
   chmod +x bin/btop
-  cd ..
 fi
 
 ${SUDO} rm -rf dist
@@ -81,16 +79,11 @@ Description: Resource monitor that shows usage and stats for processor, memory, 
 
 chmod 644 ${OUT_DIR}/DEBIAN/control
 
-for dir in "${DESTDIR}" "${DESTDIR}/share" "${DESTDIR}/share/man" \
+for dir in "${DESTDIR}" "${DESTDIR}/bin" "${DESTDIR}/share" "${DESTDIR}/share/man" \
            "${DESTDIR}/share/applications" "${DESTDIR}/share/${PKG}"
 do
     [ -d ${OUT_DIR}/${dir} ] || ${SUDO} mkdir ${OUT_DIR}/${dir}
     ${SUDO} chown root:root ${OUT_DIR}/${dir}
-done
-
-for dir in bin
-do
-    [ -d ${OUT_DIR}/${DESTDIR}/${dir} ] && ${SUDO} rm -rf ${OUT_DIR}/${DESTDIR}/${dir}
 done
 
 ${SUDO} cp bin/btop ${OUT_DIR}/${DESTDIR}/bin/btop

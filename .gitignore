@@ -46,7 +46,6 @@ stage/
 *.out
 *.app
 
-build
 bin
 btop
 .*/
