@@ -3,7 +3,7 @@
 plat=`uname -s`
 if [ "$plat" == "Darwin" ]
 then
-    sudo pkg/Uninstall-bin.sh
+  brew uninstall btop
 else
   debian=
   have_apt=`type -p apt`

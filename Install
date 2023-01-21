@@ -35,42 +35,9 @@ PKG_REL=${RELEASE}
 platform=`uname -s`
 
 [ "${platform}" == "Darwin" ] && {
-  darwin_archive=
-  if [ -f releases/${PKG_VER}/btop_${PKG_VER}-${PKG_REL}.Darwin.tgz ]
-  then
-    darwin_archive="releases/${PKG_VER}/btop_${PKG_VER}-${PKG_REL}.Darwin.tgz"
-  else
-    if [ -f releases/${PKG_VER}/btop_${PKG_VER}-${PKG_REL}.Darwin.zip ]
-    then
-      darwin_archive="releases/${PKG_VER}/btop_${PKG_VER}-${PKG_REL}.Darwin.zip"
-    else
-      # Look for other versions
-      for release in releases/*/btop_*-*.Darwin.*
-      do
-        [ "${release}" == "releases/*/btop_*-*.Darwin.*" ] && {
-          echo "No Darwin release archives located in ./releases/..."
-          echo "Download the latest btop release archive for macOS at"
-          echo "    https://github.com/doctorfree/btop/releases/latest"
-          echo "Exiting"
-          exit 1
-        }
-        echo "Located btop release archive for macOS:"
-        echo "    ${release}"
-      done
-    fi
-  fi
-  if [ "${darwin_archive}" ]
-  then
-    sudo pkg/Install-bin.sh ${darwin_archive}
-    exit 0
-  else
-    echo "Version and Release in VERSION do not match located release archive(s)"
-    echo "Install one of these located release archives manually with the command:"
-    echo "    sudo pkg/Install-bin.sh releases/.../<archive_name>.Darwin.<suffix>"
-    echo "Exiting without installing"
-    exit 1
-  fi
-  exit 1
+  brew install btop
+  brew link --overwrite btop
+  exit 0
 }
 
 get_available_packages() {

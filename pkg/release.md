@@ -13,13 +13,11 @@
 
 ## Overview
 
-Btop version 1.2.13 release 1 adds support for Arch-like platforms (e.g. Manjaro Linux), and fixes remote Arch package installations in `ascinit`.
-
-Btop version 2.0.0 release 2 added support for Apple macOS installation, initialization, and use. Installation on macOS must be performed using the [manual installation](#manual-installation) described below.
+Btop version 1.2.13 release 1 adds support for Arch-like platforms (e.g. Manjaro Linux)
 
 ## Installation
 
-Download the [latest Arch, Debian, or RPM package format release](https://github.com/doctorfree/btop/releases) for your platform. If your platform does not support Arch, Debian, or RPM format installs (e.g. Apple macOS) then download the compressed binary distribution archive for your platform and the `Install-bin.sh` script.
+Download the [latest Arch, Debian, or RPM package format release](https://github.com/doctorfree/btop/releases) for your platform. If your platform does not support Arch, Debian, or RPM format installs then download the compressed binary distribution archive for your platform and the `Install-bin.sh` script. On macOS use `brew install btop` and `brew link --overwrite btop` to install btop.
 
 ### Arch Linux based installation
 
@@ -64,13 +62,6 @@ or
 sudo ./Install-bin.sh /path/to/btop_1.2.13-1.<arch>.zip
 ```
 
-For example, to install Btop version 1.2.13 release 1 on Apple macOS using the installation script and archive previously downloaded to `$HOME/Downloads/`:
-
-```shell
-chmod 755 ~/Downloads/Install-bin.sh
-sudo ~/Downloads/Install-bin.sh ~/Downloads/btop_1.2.13-1.Darwin.tgz
-```
-
 ## Usage
 
 Execute `man btop` to view the *btop* manual page. Explore the features and capabilities of *btop* by running it in interactive menu mode with the command:
@@ -106,6 +97,8 @@ chmod 755 Uninstall-bin.sh
 sudo ./Uninstall-bin.sh
 ```
 
+On macOS removal can be performed with `brew uninstall btop`
+
 ## Changelog
 
 Version 1.2.13 release 1 adds support for:
@@ -113,7 +106,6 @@ Version 1.2.13 release 1 adds support for:
 * Arch-like platforms (e.g. Manjaro Linux)
 * Fixes remote Arch package installations in `ascinit`
 * Manual installation location moved from `/usr` to `/usr/local`
-* Apple macOS manual installation
 * Update `btop` to version 1.2.13
 
 See [CHANGELOG.md](https://github.com/doctorfree/btop/blob/master/CHANGELOG.md) for a full list of changes in every Btop release
