@@ -11,7 +11,7 @@
 # sudo dpkg -i "${PKG}"
 # sudo apt-get install -f
 
-PKG_NAMES="Asciiville asciiville"
+PKG_NAMES="btop Btop"
 DEB_ARCH=amd64
 RPM_ARCH=x86_64
 BOLD=$(tput bold)
@@ -36,25 +36,25 @@ platform=`uname -s`
 
 [ "${platform}" == "Darwin" ] && {
   darwin_archive=
-  if [ -f releases/${PKG_VER}/Asciiville_${PKG_VER}-${PKG_REL}.Darwin.tgz ]
+  if [ -f releases/${PKG_VER}/btop_${PKG_VER}-${PKG_REL}.Darwin.tgz ]
   then
-    darwin_archive="releases/${PKG_VER}/Asciiville_${PKG_VER}-${PKG_REL}.Darwin.tgz"
+    darwin_archive="releases/${PKG_VER}/btop_${PKG_VER}-${PKG_REL}.Darwin.tgz"
   else
-    if [ -f releases/${PKG_VER}/Asciiville_${PKG_VER}-${PKG_REL}.Darwin.zip ]
+    if [ -f releases/${PKG_VER}/btop_${PKG_VER}-${PKG_REL}.Darwin.zip ]
     then
-      darwin_archive="releases/${PKG_VER}/Asciiville_${PKG_VER}-${PKG_REL}.Darwin.zip"
+      darwin_archive="releases/${PKG_VER}/btop_${PKG_VER}-${PKG_REL}.Darwin.zip"
     else
       # Look for other versions
-      for release in releases/*/Asciiville_*-*.Darwin.*
+      for release in releases/*/btop_*-*.Darwin.*
       do
-        [ "${release}" == "releases/*/Asciiville_*-*.Darwin.*" ] && {
+        [ "${release}" == "releases/*/btop_*-*.Darwin.*" ] && {
           echo "No Darwin release archives located in ./releases/..."
-          echo "Download the latest Asciiville release archive for macOS at"
-          echo "    https://github.com/doctorfree/Asciiville/releases/latest"
+          echo "Download the latest btop release archive for macOS at"
+          echo "    https://github.com/doctorfree/btop/releases/latest"
           echo "Exiting"
           exit 1
         }
-        echo "Located Asciiville release archive for macOS:"
+        echo "Located btop release archive for macOS:"
         echo "    ${release}"
       done
     fi
@@ -160,7 +160,7 @@ get_available_packages
     shift
     PKG_NAMES="$*"
     [ "${PKG_AVAILABLE}" ] && {
-      echo "Currently available Asciiville packages:"
+      echo "Currently available btop packages:"
       echo ""
       for avaipkg in ${PKG_AVAILABLE}
       do

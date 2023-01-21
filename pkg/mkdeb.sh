@@ -88,6 +88,7 @@ done
 
 ${SUDO} cp bin/btop ${OUT_DIR}/${DESTDIR}/bin/btop
 
+${SUDO} cp btop.conf ${OUT_DIR}/${DESTDIR}/share/${PKG}
 ${SUDO} cp *.desktop "${OUT_DIR}/${DESTDIR}/share/applications"
 ${SUDO} cp LICENSE ${OUT_DIR}/${DESTDIR}/share/${PKG}
 ${SUDO} cp CHANGELOG.md ${OUT_DIR}/${DESTDIR}/share/${PKG}

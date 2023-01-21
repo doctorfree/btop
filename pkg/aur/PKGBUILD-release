@@ -27,19 +27,15 @@ package() {
   cd "${srcdir}/${pkgname}"
   destdir=usr
 
-  for dir in "usr" "${destdir}" "${destdir}/share" "${destdir}/share/man" \
+  for dir in "${destdir}" "${destdir}/bin" "${destdir}/share" "${destdir}/share/man" \
       "${destdir}/share/applications" "${destdir}/share/${pkgname}"
   do
     [ -d ${pkgdir}/${dir} ] || mkdir ${pkgdir}/${dir}
   done
 
-  for dir in bin
-  do
-    [ -d ${pkgdir}/${destdir}/${dir} ] && rm -rf ${pkgdir}/${destdir}/${dir}
-  done
-
   cp bin/btop ${pkgdir}/${destdir}/bin/btop
 
+  cp btop.conf ${pkgdir}/${destdir}/share/${pkgname}
   cp *.desktop "${pkgdir}/${destdir}/share/applications"
   cp LICENSE ${pkgdir}/${destdir}/share/${pkgname}
   cp CHANGELOG.md ${pkgdir}/${destdir}/share/${pkgname}
