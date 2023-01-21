@@ -1,0 +1,165 @@
+## Table of contents
+
+1. [Overview](#overview)
+1. [Installation](#installation)
+    1. [Arch Linux based installation](#arch-linux-based-installation)
+    1. [Debian based installation](#debian-based-installation)
+    1. [RPM based installation](#rpm-based-installation)
+    1. [Manual installation](#manual-installation)
+1. [Configuration](#configuration)
+1. [Usage](#usage)
+1. [Removal](#removal)
+1. [Changelog](#changelog)
+
+## Overview
+
+Btop version 2.0.1 release 1 adds support for Arch-like platforms (e.g. Manjaro Linux), and fixes remote Arch package installations in `ascinit`.
+
+Btop version 2.0.0 release 2 added support for Apple macOS installation, initialization, and use. Installation on macOS must be performed using the [manual installation](#manual-installation) described below.
+
+**[Note:]** Version 2.0.0 release 2 and later install all Btop components in `/usr/local/...` rather than `/usr/...`. It may be necessary to add `/usr/local/bin` to your shell's PATH environment variable (some effort has been made to do this automatically).
+
+Supported features include:
+
+* Featureful ASCII Art display including slideshow and zoom capabilities
+* Character based ASCII Art and image to ascii conversion utility `jp2a`
+* The lightweight character based system monitor, `btop`
+* The lightweight character based web browser, `w3m`
+* The lightweight character based mail client, `neomutt`
+* The lightweight character based FTP client, `cbftp`
+* The lightweight character based music player, `mpcplus`
+* The lightweight character based file manager, `ranger`
+* The lightweight character based disk usage analyzer, `gdu`
+* The lightweight character based journal app, `jrnl`
+* One or more terminal emulators running a command
+* A tmux session
+* A command line web search
+* A zoomable map of the world
+* Command line character based Twitter client
+* A network download/upload speed test
+* The AAlib BB demo running in a tmux session (Debian based systems only)
+* The ASCII text-based dungeon game `nethack` with Extended ASCII glyphs
+* The `cmatrix` command that displays the screen from "The Matrix"
+* Display system info
+* Display the Phase of the Moon
+* Display a weather report
+* Display a Pokemon
+* Display the MusicPlayerPlus or RoonCommandLine interactive menus
+* Any character based client the user wishes to run
+* Several asciimatics animations optionally accompanied by audio
+
+## Installation
+
+Download the [latest Arch, Debian, or RPM package format release](https://github.com/doctorfree/btop/releases) for your platform. If your platform does not support Arch, Debian, or RPM format installs (e.g. Apple macOS) then download the compressed binary distribution archive for your platform and the `Install-bin.sh` script.
+
+### Arch Linux based installation
+
+Install the package on Arch Linux based systems by executing the command:
+
+```shell
+sudo pacman -U ./btop_2.0.1-1-x86_64.pkg.tar.zst
+```
+
+### Debian based installation
+
+Install the package on Debian based systems by executing the commands:
+
+```shell
+sudo apt update -y
+sudo apt install ./btop_2.0.1-1.amd64.deb
+```
+
+or, on a Raspberry Pi:
+
+```shell
+sudo apt update -y
+sudo apt install ./btop_2.0.1-1.armhf.deb
+```
+
+### RPM based installation
+
+Install the package on RPM based systems by executing the command
+```shell
+sudo dnf update -y
+sudo dnf localinstall ./btop-2.0.1-1.x86_64.rpm
+```
+
+### Manual installation
+
+On systems for which the Arch, Debian, or RPM packages will not suffice, install manually by downloading the `Install-bin.sh` script and either the gzip'd distribution archive or the zip'd distribution archive.  After downloading the installation script and distribution archive, as a user with sudo privilege execute the commands:
+
+```shell
+chmod 755 Install-bin.sh
+sudo ./Install-bin.sh /path/to/btop_2.0.1-1.<arch>.tgz
+or
+sudo ./Install-bin.sh /path/to/btop_2.0.1-1.<arch>.zip
+```
+
+For example, to install Btop version 2.0.1 release 1 on Apple macOS using the installation script and archive previously downloaded to `$HOME/Downloads/`:
+
+```shell
+chmod 755 ~/Downloads/Install-bin.sh
+sudo ~/Downloads/Install-bin.sh ~/Downloads/btop_2.0.1-1.Darwin.tgz
+```
+
+## Configuration
+
+* REQUIRED: execute the `ascinit` command to initialize *mutt/neomutt*, *tmux*, *ranger*, *rainbowstream*, and install terminal emulators
+    * The `ascinit` command should be executed as a normal user with sudo privilege
+        * ascinit # (not 'sudo ascinit')
+    * Execute `ascinit -c` rather than `ascinit` if no terminal emulators or graphical utilities are desired
+* OPTIONAL: authorize the command line Twitter client by executing `rainbowstream`
+
+See the [Btop README](https://github.com/doctorfree/btop#readme) for additional configuration info.
+
+## Usage
+
+Execute `man btop` to view the *btop* manual page. Explore the features and capabilities of *btop* by running it in interactive menu mode with the command:
+
+```console
+btop
+```
+
+## Removal
+
+Removal of the package on Arch Linux based systems can be accomplished by issuing the command:
+
+```shell
+sudo pacman -Rs btop
+```
+
+Removal of the package on Debian based systems can be accomplished by issuing the command:
+
+```shell
+sudo apt remove btop
+```
+
+Removal of the package on RPM based systems can be accomplished by issuing the command:
+
+```shell
+sudo dnf remove btop
+```
+
+On systems for which the manual installation was performed using the `Install-bin.sh` script, remove Btop manually by downloading the `Uninstall-bin.sh` script and, as a user with sudo privilege, execute the commands:
+
+```shell
+chmod 755 Uninstall-bin.sh
+sudo ./Uninstall-bin.sh
+```
+
+Note that manual removal of Btop using the `Uninstall-bin.sh` script will not remove any of the dependencies manually installed above. Manual installation and removal of Btop is not as robust as packaged installation and removal. Hopefully additional platform packaging will be available in the future. If you would like to assist with this effort, see the ['Contributing' section of the Asciiville README](https://github.com/doctorfree/Asciiville#contributing).
+
+## Changelog
+
+Version 2.0.1 release 1 adds support for:
+
+* Arch-like platforms (e.g. Manjaro Linux)
+* Fixes remote Arch package installations in `ascinit`
+
+Version 2.0.0 release 2 adds support for:
+
+* Installation location moved from `/usr` to `/usr/local`
+* Apple macOS manual installation
+* Update `btop` to version 1.2.13
+
+See [CHANGELOG.md](https://github.com/doctorfree/btop/blob/master/CHANGELOG.md) for a full list of changes in every Btop release

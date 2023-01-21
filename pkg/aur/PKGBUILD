@@ -1,0 +1,109 @@
+# Maintainer: Ronald Record <ronaldrecord@gmail.com>
+
+# Get the version and release from the VERSION file
+# Move to use of pkgver() function with something like this:
+#   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+#
+if [ -f VERSION ]
+then
+  . ./VERSION
+else
+  [ "${SRC}" ] || SRC="${HOME}/src/btop"
+  if [ -f ${SRC}/VERSION ]
+  then
+    . ${SRC}/VERSION
+  else
+    VERSION=2.0.1
+    RELEASE=1
+  fi
+fi
+
+pkgname=btop
+pkgver=v${VERSION}r${RELEASE}
+pkgrel=1
+pkgdesc="Resource monitor that shows usage and stats for processor, memory, disks, network and processes"
+arch=('x86_64' 'armv7h')
+url="https://github.com/doctorfree/btop"
+license=('Apache')
+depends=(gcc-libs)
+makedepends=(pandoc zip)
+source=("${pkgname}::git+https://github.com/doctorfree/btop.git")
+sha256sums=('SKIP')
+
+prepare() {
+  cd "${srcdir}/${pkgname}"
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  make distclean
+  make STATIC=true STRIP=true
+  chmod +x bin/btop
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  destdir=usr
+
+  for dir in "usr" "${destdir}" "${destdir}/share" "${destdir}/share/man" \
+      "${destdir}/share/applications" "${destdir}/share/${pkgname}"
+  do
+    [ -d ${pkgdir}/${dir} ] || mkdir ${pkgdir}/${dir}
+  done
+
+  for dir in bin
+  do
+    [ -d ${pkgdir}/${destdir}/${dir} ] && rm -rf ${pkgdir}/${destdir}/${dir}
+  done
+
+  cp bin/btop ${pkgdir}/${destdir}/bin/btop
+
+  cp *.desktop "${pkgdir}/${destdir}/share/applications"
+  cp LICENSE ${pkgdir}/${destdir}/share/${pkgname}
+  cp CHANGELOG.md ${pkgdir}/${destdir}/share/${pkgname}
+  cp README.md ${pkgdir}/${destdir}/share/${pkgname}
+  pandoc -f gfm README.md | \
+    tee ${pkgdir}/${destdir}/share/${pkgname}/README.html > /dev/null
+  cp VERSION ${pkgdir}/${destdir}/share/${pkgname}
+  cp -a themes ${pkgdir}/${destdir}/share/btop/themes
+  mkdir -p ${pkgdir}/${destdir}/share/icons
+  mkdir -p ${pkgdir}/${destdir}/share/icons/hicolor
+  mkdir -p ${pkgdir}/${destdir}/share/icons/hicolor/48x48
+  mkdir -p ${pkgdir}/${destdir}/share/icons/hicolor/48x48/apps
+  mkdir -p ${pkgdir}/${destdir}/share/icons/hicolor/scalable
+  mkdir -p ${pkgdir}/${destdir}/share/icons/hicolor/scalable/apps
+  cp Img/icon.png \
+    "${pkgdir}/${destdir}/share/icons/hicolor/48x48/apps/btop.png"
+  cp Img/icon.svg \
+    "${pkgdir}/${destdir}/share/icons/hicolor/scalable/apps/btop.svg"
+  gzip -9 ${pkgdir}/${destdir}/share/${pkgname}/CHANGELOG.md
+
+  cp -a man/man1 ${pkgdir}/${destdir}/share/man/man1
+
+  [ -d ${pkgdir}/usr/share ] || mkdir -p ${pkgdir}/usr/share
+  [ "${destdir}" == "usr" ] || {
+    mv ${pkgdir}/${destdir}/share/man ${pkgdir}/usr/share
+  }
+  chmod 644 ${pkgdir}/usr/share/man/*/*
+  chmod 755 ${pkgdir}/${destdir}/bin/* \
+            ${pkgdir}/${destdir}/bin \
+            ${pkgdir}/usr/share/man \
+            ${pkgdir}/usr/share/man/*
+  find ${pkgdir}/${destdir}/share/${pkgname} -type d | while read dir
+  do
+    chmod 755 "${dir}"
+  done
+  find ${pkgdir}/${destdir}/share/${pkgname} -type f | while read f
+  do
+    chmod 644 "${f}"
+  done
+  find ${pkgdir}/${destdir}/share/${pkgname} -type d | while read dir
+  do
+    chmod 755 "${dir}"
+  done
+  find ${pkgdir}/${destdir}/share/${pkgname} -type f | while read f
+  do
+    chmod 644 "${f}"
+  done
+  chmod 755 ${pkgdir}/${destdir}/share/${pkgname}/tools/bin/*
+}

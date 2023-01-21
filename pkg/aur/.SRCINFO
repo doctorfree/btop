@@ -1,0 +1,15 @@
+pkgbase = btop
+	pkgdesc = Resource monitor that shows usage and stats for processor, memory, disks, network and processes
+	pkgver = v2.0.1r1
+	pkgrel = 1
+	url = https://github.com/doctorfree/btop
+	arch = x86_64
+	arch = armv7h
+	license = Apache
+	makedepends = pandoc
+	makedepends = zip
+	depends = gcc-libs
+	source = btop::git+https://github.com/doctorfree/btop.git
+	sha256sums = SKIP
+
+pkgname = btop

@@ -64,3 +64,17 @@ btop
 *.cxxflags
 *.files
 *.includes
+
+# Packaging folders
+dist/*
+tmp/*
+releases/*
+
+# vim files
+.*.sw[a-z]
+*.un~
+Session.vim
+.netrwhist
+
+#do not ignore .github directory
+!.github
