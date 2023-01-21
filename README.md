@@ -1,22 +1,8 @@
 # ![btop++](Img/logo.png)
 
-<a href="https://repology.org/project/btop/versions">
-    <img src="https://repology.org/badge/vertical-allrepos/btop.svg" alt="Packaging status" align="right">
-</a>
+This repository is a fork of the original [btop repository](https://github.com/aristocratos/btop) designed to package and integrate with the [Asciiville project](https://github.com/doctorfree/Asciiville#readme). No new features or bug fixes are include in this repository. Packaging for a variety of platforms in the native packaging format is provided.
 
-![Linux](https://img.shields.io/badge/-Linux-grey?logo=linux)
-![macOS](https://img.shields.io/badge/-OSX-black?logo=apple)
-![FreeBSD](https://img.shields.io/badge/-FreeBSD-red?logo=freebsd)
-![Usage](https://img.shields.io/badge/Usage-System%20resource%20monitor-yellow)
-![c++20](https://img.shields.io/badge/cpp-c%2B%2B20-green)
-![latest_release](https://img.shields.io/github/v/tag/aristocratos/btop?label=release)
-[![Donate](https://img.shields.io/badge/-Donate-yellow?logo=paypal)](https://paypal.me/aristocratos)
-[![Sponsor](https://img.shields.io/badge/-Sponsor-red?logo=github)](https://github.com/sponsors/aristocratos)
-[![Coffee](https://img.shields.io/badge/-Buy%20me%20a%20Coffee-grey?logo=Ko-fi)](https://ko-fi.com/aristocratos)
-[![btop](https://snapcraft.io/btop/badge.svg)](https://snapcraft.io/btop)
-[![Continuous Build Linux](https://github.com/aristocratos/btop/actions/workflows/continuous-build-linux.yml/badge.svg)](https://github.com/aristocratos/btop/actions/workflows/continuous-build-linux.yml)
-[![Continuous Build macOS](https://github.com/aristocratos/btop/actions/workflows/continuous-build-macos.yml/badge.svg)](https://github.com/aristocratos/btop/actions/workflows/continuous-build-macos.yml)
-[![Continuous Build FreeBSD](https://github.com/aristocratos/btop/actions/workflows/continuous-build-freebsd.yml/badge.svg)](https://github.com/aristocratos/btop/actions/workflows/continuous-build-freebsd.yml)
+If your platform is not supported here then you may be able to find a binary btop distribution archive at [the primary btop repository](https://github.com/aristocratos/btop/releases).
 
 ## Index
 
@@ -161,7 +147,7 @@ Btop++ uses the same theme files as bpytop and bashtop (some color values missin
 
 See [themes](https://github.com/aristocratos/btop/tree/master/themes) folder for available themes.
 
-The `make install` command places the default themes in `[$PREFIX or /usr/local]/share/btop/themes`.
+The `make install` command places the default themes in `[$PREFIX or /usr]/share/btop/themes`.
 User created themes should be placed in `$XDG_CONFIG_HOME/btop/themes` or `$HOME/.config/btop/themes`.
 
 Let me know if you want to contribute with new themes.
@@ -242,7 +228,7 @@ Also needs a UTF8 locale and a font that covers:
    * **Run install.sh or:**
 
    ``` bash
-   # use "make install PREFIX=/target/dir" to set target, default: /usr/local
+   # use "make install PREFIX=/target/dir" to set target, default: /usr
    # only use "sudo" when installing to a NON user owned directory
    sudo make install
    ```
@@ -353,7 +339,7 @@ Also needs a UTF8 locale and a font that covers:
 
 4. **Install**
 
-   Append `PREFIX=/target/dir` to set target, default: `/usr/local`
+   Append `PREFIX=/target/dir` to set target, default: `/usr`
 
    Notice! Only use "sudo" when installing to a NON user owned directory.
 
@@ -443,7 +429,7 @@ Also needs a UTF8 locale and a font that covers:
 
 4. **Install**
 
-   Append `PREFIX=/target/dir` to set target, default: `/usr/local`
+   Append `PREFIX=/target/dir` to set target, default: `/usr`
 
    Notice! Only use "sudo" when installing to a NON user owned directory.
 
@@ -527,7 +513,7 @@ Also needs a UTF8 locale and a font that covers:
 
 4. **Install**
 
-   Append `PREFIX=/target/dir` to set target, default: `/usr/local`
+   Append `PREFIX=/target/dir` to set target, default: `/usr`
 
    Notice! Only use "sudo" when installing to a NON user owned directory.
 

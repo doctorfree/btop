@@ -1,6 +1,6 @@
 pkgbase = btop
 	pkgdesc = Resource monitor that shows usage and stats for processor, memory, disks, network and processes
-	pkgver = v2.0.1r1
+	pkgver = v1.2.13r1
 	pkgrel = 1
 	url = https://github.com/doctorfree/btop
 	arch = x86_64

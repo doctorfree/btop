@@ -33,7 +33,7 @@ have_brew=`type -p brew`
   brew install coreutils make gcc@12
 }
 
-./build btop
+./build -p "/usr/local" btop
 
 ${SUDO} rm -rf dist
 mkdir dist

@@ -4,7 +4,7 @@ SRC_NAME="btop"
 PKG_NAME="btop"
 DEBFULLNAME="Ronald Record"
 DEBEMAIL="ronaldrecord@gmail.com"
-DESTDIR="usr/local"
+DESTDIR="usr"
 SRC=${HOME}/src
 ARCH=amd64
 SUDO=sudo
@@ -81,7 +81,7 @@ Description: Resource monitor that shows usage and stats for processor, memory, 
 
 chmod 644 ${OUT_DIR}/DEBIAN/control
 
-for dir in "usr" "${DESTDIR}" "${DESTDIR}/share" "${DESTDIR}/share/man" \
+for dir in "${DESTDIR}" "${DESTDIR}/share" "${DESTDIR}/share/man" \
            "${DESTDIR}/share/applications" "${DESTDIR}/share/${PKG}"
 do
     [ -d ${OUT_DIR}/${dir} ] || ${SUDO} mkdir ${OUT_DIR}/${dir}
@@ -143,7 +143,7 @@ echo "Building ${PKG_NAME}_${PKG_VER} Debian package"
 ${SUDO} dpkg --build ${PKG_NAME}_${PKG_VER} ${PKG_NAME}_${PKG_VER}-${PKG_REL}.${ARCH}.deb
 cd ${PKG_NAME}_${PKG_VER}
 echo "Creating compressed tar archive of ${PKG_NAME} ${PKG_VER} distribution"
-${SUDO} tar cf - usr/local/*/* | gzip -9 > ../${PKG_NAME}_${PKG_VER}-${PKG_REL}.${ARCH}.tgz
+${SUDO} tar cf - usr/*/* | gzip -9 > ../${PKG_NAME}_${PKG_VER}-${PKG_REL}.${ARCH}.tgz
 
 have_zip=`type -p zip`
 [ "${have_zip}" ] || {
@@ -151,7 +151,7 @@ have_zip=`type -p zip`
   ${SUDO} apt-get install zip -y
 }
 echo "Creating zip archive of ${PKG_NAME} ${PKG_VER} distribution"
-${SUDO} zip -q -r ../${PKG_NAME}_${PKG_VER}-${PKG_REL}.${ARCH}.zip usr/local/*/*
+${SUDO} zip -q -r ../${PKG_NAME}_${PKG_VER}-${PKG_REL}.${ARCH}.zip usr/*/*
 cd ..
 
 [ "${GCI}" ] || {

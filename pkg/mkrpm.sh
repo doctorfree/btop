@@ -2,7 +2,7 @@
 PKG="btop"
 SRC_NAME="btop"
 PKG_NAME="btop"
-DESTDIR="usr/local"
+DESTDIR="usr"
 SRC=${HOME}/src
 SUDO=sudo
 GCI=
@@ -42,7 +42,7 @@ mkdir dist
 [ -d ${OUT_DIR} ] && rm -rf ${OUT_DIR}
 mkdir ${OUT_DIR}
 
-for dir in "usr" "${DESTDIR}" "${DESTDIR}/share" "${DESTDIR}/share/man" \
+for dir in "${DESTDIR}" "${DESTDIR}/share" "${DESTDIR}/share/man" \
            "${DESTDIR}/share/applications" "${DESTDIR}/share/${PKG}"
 do
     [ -d ${OUT_DIR}/${dir} ] || ${SUDO} mkdir ${OUT_DIR}/${dir}
@@ -144,14 +144,14 @@ ${SUDO} cp ${OUT_DIR}/RPMS/*/*.rpm dist
 
 cd ${OUT_DIR}
 echo "Creating compressed tar archive of ${PKG_NAME} ${PKG_VER} distribution"
-${SUDO} tar cf - usr/local/*/* | gzip -9 > ../${PKG_NAME}_${PKG_VER}-${PKG_REL}.${ARCH}.tgz
+${SUDO} tar cf - usr/*/* | gzip -9 > ../${PKG_NAME}_${PKG_VER}-${PKG_REL}.${ARCH}.tgz
 
 have_zip=`type -p zip`
 [ "${have_zip}" ] || {
   ${SUDO} yum install zip -y
 }
 echo "Creating zip archive of ${PKG_NAME} ${PKG_VER} distribution"
-${SUDO} zip -q -r ../${PKG_NAME}_${PKG_VER}-${PKG_REL}.${ARCH}.zip usr/local/*/*
+${SUDO} zip -q -r ../${PKG_NAME}_${PKG_VER}-${PKG_REL}.${ARCH}.zip usr/*/*
 cd ../..
 
 [ "${GCI}" ] || {
