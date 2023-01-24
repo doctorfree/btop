@@ -2,7 +2,6 @@ Name: btop
 Version:    %{_version}
 Release:    %{_release}
 BuildArch:  x86_64
-Requires:
 URL:        https://github.com/doctorfree/btop
 Vendor:     Doctorwhen's Bodacious Laboratory
 Packager:   ronaldrecord@gmail.com
