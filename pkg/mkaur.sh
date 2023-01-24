@@ -56,7 +56,6 @@ ${SUDO} rm -rf ${PKG}
 mkdir ${PKG}
 cp VERSION ${PKG}/VERSION
 cp pkg/aur/PKGBUILD ${PKG}/PKGBUILD
-cp pkg/aur/${PKG}.install ${PKG}/${PKG}.install
 cp pkg/aur/.SRCINFO ${PKG}/.SRCINFO
 cp pkg/aur/makepkg.conf ${PKG}/makepkg.conf
 
