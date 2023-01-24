@@ -26,7 +26,7 @@ arch=('x86_64' 'armv7h')
 url="https://github.com/doctorfree/btop"
 license=('Apache')
 depends=(gcc-libs)
-makedepends=(pandoc zip)
+makedepends=(pandoc-bin zip)
 source=("${pkgname}::git+https://github.com/doctorfree/btop.git")
 sha256sums=('SKIP')
 

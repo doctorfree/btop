@@ -66,6 +66,7 @@ btop
 
 # Packaging folders
 dist/*
+pkg/dist/*
 tmp/*
 releases/*
 
