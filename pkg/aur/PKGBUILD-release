@@ -8,7 +8,7 @@ arch=('x86_64' 'armv7h')
 url="https://github.com/doctorfree/btop"
 license=('Apache')
 depends=(gcc-libs)
-makedepends=(pandoc-bin zip)
+makedepends=(zip)
 source=("${pkgname}::git+https://github.com/doctorfree/btop.git")
 sha256sums=('SKIP')
 
@@ -40,8 +40,6 @@ package() {
   cp LICENSE ${pkgdir}/${destdir}/share/${pkgname}
   cp CHANGELOG.md ${pkgdir}/${destdir}/share/${pkgname}
   cp README.md ${pkgdir}/${destdir}/share/${pkgname}
-  pandoc -f gfm README.md | \
-    tee ${pkgdir}/${destdir}/share/${pkgname}/README.html > /dev/null
   cp VERSION ${pkgdir}/${destdir}/share/${pkgname}
   cp -a themes ${pkgdir}/${destdir}/share/btop/themes
   mkdir -p ${pkgdir}/${destdir}/share/icons
