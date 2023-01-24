@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sudo rm -rf dist releases btop pkg/dist/arch pkg/dist/fedora pkg/dist/rpi
+sudo rm -rf dist obj releases btop
 [ -f Makefile ] && make distclean
