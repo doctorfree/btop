@@ -28,9 +28,9 @@ cp -a %{_sourcedir}/usr %{buildroot}/usr
 %files
 %defattr(-,root,root)
 %exclude %dir /usr/share/man/man1
-%exclude %dir /usr/share/man/man6
 %exclude %dir /usr/share/man
-%exclude %dir /usr/share/doc
+%exclude %dir /usr/share/applications
+%exclude %dir /usr/share/icons
 %exclude %dir /usr/share
 %exclude %dir /usr/bin
 /usr/bin/*
