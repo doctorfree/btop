@@ -13,7 +13,7 @@
 
 ## Overview
 
-Btop version 1.2.13 release 1 adds support for Arch-like platforms (e.g. Manjaro Linux)
+This fork of the btop repository at https://github.com/aristocratos/btop provides packaging and integration for the [Asciiville project](https://github.com/doctorfree/Asciiville#readme). Btop version 1.2.13 release 1 adds support for Arch-like platforms (e.g. Manjaro Linux).
 
 ## Installation
 

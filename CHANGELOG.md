@@ -1,5 +1,7 @@
 ## v1.2.13
 
+* Native installation packaging for Arch Linux, Debian based Linux, RPM based Linux
+
 * Makefile: VERBOSE=true flag for Makefile to display all compiler commands and fixed so already set CXXFLAGS and LDFLAGS are displayed.
 
 * Makefile: Added autodetection for gcc12 to make compiling on macos Ventura easier.

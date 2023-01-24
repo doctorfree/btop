@@ -95,35 +95,7 @@ else
   fi
 fi
 
-# Add /usr/local/bin to PATH
-if [ -d /etc/profile.d ]
-then
-  if [ -f /etc/profile.d/btop.sh ]
-  then
-    echo 'export PATH="$PATH:/usr/local/bin"' >> /etc/profile.d/btop.sh
-  else
-    echo 'export PATH="$PATH:/usr/local/bin"' > /etc/profile.d/btop.sh
-  fi
-else
-  [ -f /etc/profile ] && {
-    echo 'export PATH="$PATH:/usr/local/bin"' >> /etc/profile
-  }
-fi
-if [ -d /etc/zsh ]
-then
-  if [ -f /etc/zsh/zshenv ]
-  then
-    echo 'export PATH="$PATH:/usr/local/bin"' >> /etc/zsh/zshenv
-  else
-    echo 'export PATH="$PATH:/usr/local/bin:/usr/bin:/bin"' > /etc/zsh/zshenv
-  fi
-else
-  [ -f /etc/zshrc ] && {
-    echo 'export PATH="$PATH:/usr/local/bin"' >> /etc/zshrc
-  }
-fi
-
 echo "Installation of ${pkgname} Version ${pkgver} Release ${pkgrel}"
-echo "for architecture ${pkgarc} complete. Add '/usr/local/bin' to PATH."
+echo "for architecture ${pkgarc} complete."
 
 exit 0

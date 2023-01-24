@@ -1,10 +1,10 @@
 #!/bin/bash
 
-BTOP_DIRS="/usr/local/share/btop"
+BTOP_DIRS="/usr/share/btop"
 
-BTOP_FILES="/usr/local/bin/btop \
-/usr/local/share/applications/btop.desktop \
-/usr/local/share/man/man1/btop.1"
+BTOP_FILES="/usr/bin/btop \
+/usr/share/applications/btop.desktop \
+/usr/share/man/man1/btop.1"
 
 user=`id -u -n`
 
